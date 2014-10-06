@@ -35,40 +35,42 @@ void pobierz_rok(int rok) {
 		exit(0);
 	}
 }
+void wynik(int f, int d) {
+	int wielkanoc;
+	if (f == 6 && d == 29)
+		cout << "Wielkanoc jest 26 kwietnia." << endl;
+	else if (f == 6 && d == 28 && ((11 * x + 11) % 30 < 19))
+		cout << "Wielkanoc jest 18 kwietnia." << endl;
+	else if ((d + f) < 10) {
+		wielkanoc = (22 + d + f);
+		cout << "Wielkanoc jest " << wielkanoc << " marca." << endl;
+	} else if ((d + f) > 9) {
+		wielkanoc = (d + f - 9);
+		cout << "Wielkanoc jest " << wielkanoc << " kwietnia." << endl;
+	}
+}
 
 int main() {
-	int rok, a, b, c, d, e, f,wielkanoc;
-	char powtorzyc='t';
+	int rok, a, b, c, d, f;
+	char powtorzyc = 't';
 
-	cout<<"Program do obliczania dnia wielkanocy."<<endl;
+	cout << "Program do obliczania dnia wielkanocy." << endl;
 
-	do{
-	cout << "Podaj rok (1-2199):" << endl;
-	cin >> rok;
-	pobierz_rok(rok);
+	do {
+		cout << "Podaj rok (1-2199):" << endl;
+		cin >> rok;
+		pobierz_rok(rok);
 
-	a = rok % 19;
-	b = rok % 4;
-	c = rok % 7;
-	d = (19 * a + x) % 30;
-	f = (2 * b + 4 * c + 6 * d + y) % 7;
+		a = rok % 19;
+		b = rok % 4;
+		c = rok % 7;
+		d = (19 * a + x) % 30;
+		f = (2 * b + 4 * c + 6 * d + y) % 7;
 
-			if(f==6 && d==29)
-				cout<<"Wielkanoc jest 26 kwietnia."<<endl;
-			else if(f==6 && d==28 && ((11*x+11)%30<19))
-				cout<<"Wielkanoc jest 18 kwietnia."<<endl;
-			else if((d+f)<10){
-				wielkanoc=(22+d+f);
-				cout<<"Wielkanoc jest "<<wielkanoc<<" marca."<<endl;
-			}
-			else if((d+f)>9)
-			{
-				wielkanoc=(d+f-9);
-				cout<<"Wielkanoc jest "<<wielkanoc<<" kwietnia."<<endl;
-			}
-			cout<<"Chcesz obliczyc jeszcze raz? [t/n]"<<endl;
-			cin>>powtorzyc;
-	}while(powtorzyc=='t');
-	cout<<"Koniec programu."<<endl;
+		wynik(f, d);
+		cout << "Chcesz obliczyc jeszcze raz? [t/n]" << endl;
+		cin >> powtorzyc;
+	} while (powtorzyc == 't');
+	cout << "Koniec programu." << endl;
 	return 0;
 }
